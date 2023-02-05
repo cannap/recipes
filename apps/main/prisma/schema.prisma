@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // NOTE: You probably want to change this to another database later on
+  provider = "postgres"
+
+  // This value is read from the .env file.
+  url = env("DATABASE_URL")
+}
+
+model Account {
+  id                 String   @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id   String  @id @default(cuid())
+  name String?
+
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  Recipe        Recipe[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Recipe {
+  id          Int                   @id @default(autoincrement())
+  title       String
+  slug        String                @unique
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+  user        User                  @relation(fields: [userId], references: [id])
+  userId      String
+  description String
+  difficulty  Difficulty
+  published   Boolean               @default(false)
+  categories  CategoriesOnRecipes[]
+}
+
+model Category {
+  id      Int                   @id @default(autoincrement())
+  name    String                @unique
+  slug    String                @unique
+  recipes CategoriesOnRecipes[]
+}
+
+model SubCategory {
+  id         Int    @id @default(autoincrement())
+  name       String @unique
+  slug       String @unique
+  categoryId Int
+}
+
+model CategoriesOnRecipes {
+  recipe     Recipe   @relation(fields: [recipeId], references: [id])
+  recipeId   Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  assignedAt DateTime @default(now())
+
+  @@id([recipeId, categoryId])
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  DIFFICULT
+}

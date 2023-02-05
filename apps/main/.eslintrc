@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "space-before-function-paren": "off"
+  },
+  "extends": ["@nuxtjs/eslint-config-typescript"],
+  "overrides": [
+    {
+      "files": ["./server/**/*.ts"],
+      "rules": {
+        "indent": "off",
+        "vue/html-self-closing": "off",
+        "space-before-function-paren": "off",
+        "no-console": [
+          "error",
+          {
+            "allow": ["info", "warn", "trace", "error"]
+          }
+        ]
+      }
+    }
+  ]
+}
