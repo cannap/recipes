@@ -1,3 +1,4 @@
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -11,6 +12,7 @@ export default defineNuxtConfig({
     facebookSecret: process.env.FACEBOOK_SECRET,
     secret: process.env.AUTH_SECRET
   },
+
 
   typescript: {
     shim: false
@@ -31,3 +33,5 @@ export default defineNuxtConfig({
     enableGlobalAppMiddleware: false
   }
 })
+
+
