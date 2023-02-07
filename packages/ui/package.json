@@ -6,6 +6,7 @@
   "files": [
     "dist"
   ],
+  "license": "MIT",
   "main": "./dist/ui.umd.js",
   "module": "./dist/ui.es.js",
   "types": "./dist/types/index.d.ts",
