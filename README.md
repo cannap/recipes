@@ -13,4 +13,4 @@ recipe app for learning purposes
 
 - Zod
 - VeeValidate
-- nuxt-auth(sidebase)
+- [nuxt-auth(sidebase)](https://github.com/sidebase/nuxt-auth)
