@@ -75,6 +75,18 @@ model Recipe {
   difficulty  Difficulty
   published   Boolean               @default(false)
   categories  CategoriesOnRecipes[]
+  servings    Int
+}
+
+model Ingredient {
+  id     Int @id @default(autoincrement())
+  amount Int
+}
+
+model IngredientOnRecipe {
+  id     Int    @id @default(autoincrement())
+  amount Int
+  unit   String
 }
 
 model Category {

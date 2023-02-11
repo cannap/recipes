@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     locales: [{ code: 'en', file: 'en.json', iso: 'en-US' }]
   },
   auth: {
-
     enableGlobalAppMiddleware: false
   }
 })

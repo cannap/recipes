@@ -24,7 +24,12 @@
   // Auto-complete `.value` attribute when volar is installed
   "volar.autoCompleteRefs": true,
   "i18n-ally.localesPaths": ["locales"],
-
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
+  "emmet.syntaxProfiles": { "vue-html": "html", "vue": "html" },
   "files.exclude": {
     //  "**/node_modules": true,
     "**/*.log*": true,

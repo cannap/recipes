@@ -18,6 +18,6 @@ export interface IProps {
   /**
   * Native button type
   */
-  type: NonNullable<ButtonHTMLAttributes['type']>;
+  type?: NonNullable<ButtonHTMLAttributes['type']>;
 
 }
