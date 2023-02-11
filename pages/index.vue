@@ -1,9 +1,6 @@
 <script setup lang="ts">
-
 const { $client } = useNuxtApp()
 const test = ref<string>('gerg')
-
-
 </script>
 <template>
   <div>

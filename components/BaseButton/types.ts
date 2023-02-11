@@ -1,11 +1,16 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 
-export interface Props {
+export interface IProps {
+
+  outline?: boolean
+  loading?: boolean,
+
+  loadingText?: string
   /**
-  * The Color variant
+  * The Variant
   */
   variant?:
-  | 'default'
+  | 'secondary'
   | 'primary'
   | 'success'
   | 'warning'

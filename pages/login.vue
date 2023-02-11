@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const { signIn, signOut, data } = useSession()
 const localePath = useLocalePath()
 </script>
@@ -9,12 +8,8 @@ const localePath = useLocalePath()
       Go To Profile
     </NuxtLink>
     {{ data?.user.id }}
-    <button @click="signIn('facebook')">
-      Test
-    </button>
+    <button @click="signIn('facebook')">Test</button>
 
-    <button class="böla" @click="signOut()">
-      Signout
-    </button>
+    <button class="böla" @click="signOut()">Signout</button>
   </div>
 </template>
