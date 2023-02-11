@@ -7,21 +7,15 @@ const config = useRuntimeConfig()
 
 export default NuxtAuthHandler({
   // A secret string you defilogne, to ensure correct encryption
-
-  secret: config.authSecret,
+  secret: config.secret,
   adapter: PrismaAdapter(prisma),
-
   providers: [
-
     (FacebookProvider as any as { default: typeof FacebookProvider }).default({
       clientId: config.facebookClientID,
       clientSecret: config.facebookSecret
-
     })
   ],
-
   callbacks: {
-
     session({ session, user }) {
       if (session?.user) {
         session.user.id = user.id
@@ -29,5 +23,4 @@ export default NuxtAuthHandler({
       return session
     }
   }
-
 })

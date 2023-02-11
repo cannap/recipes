@@ -15,6 +15,13 @@
     "editor.tabSize": 4
   },
 
+  "workbench.editor.wrapTabs": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 25,
+  "editor.letterSpacing": 0.1,
+
   "eslint.validate": ["javascript", "typescript", "vue"],
   // Tailwind Support, see https://tailwindcss.nuxt.dev/tailwind/editor-support
   "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
@@ -24,25 +31,14 @@
   // Auto-complete `.value` attribute when volar is installed
   "volar.autoCompleteRefs": true,
   "i18n-ally.localesPaths": ["locales"],
-  "sqltools.connections": [
-    {
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 32768,
-      "driver": "PostgreSQL",
-      "name": "Local",
-      "database": "postgres",
-      "username": "postgres"
-    }
-  ],
+
   "files.exclude": {
-    "**/node_modules": true,
+    //  "**/node_modules": true,
     "**/*.log*": true,
     "**/.nitro": true,
     "**/.cache": true,
     "**/.output": true,
-    "**/.env": true,
-    "**/dist": true,
+
     "**/*.sqlite": true,
     "node_modules/.pnpm/mkdir@0.0.2/node_modules/mkdir/**/node_modules": true,
     "node_modules/mkdir/**/node_modules": true,

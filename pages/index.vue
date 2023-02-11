@@ -1,11 +1,12 @@
-<template>
-  <div>
-    <NuxtLink :to="'/login'">
-      Server
-    </NuxtLink>
-  </div>
-</template>
+<script setup lang="ts">
 
-<script lang="ts" setup>
+const { $client } = useNuxtApp()
+const test = ref<string>('gerg')
+
 
 </script>
+<template>
+  <div>
+    <input type="text" v-model="test" />
+  </div>
+</template>
