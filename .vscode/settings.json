@@ -5,7 +5,7 @@
     "source.fixAll.eslint": true
   },
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[js]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -14,13 +14,6 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.tabSize": 4
   },
-
-  "workbench.editor.wrapTabs": true,
-  "editor.stickyScroll.enabled": false,
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.fontSize": 14,
-  "editor.lineHeight": 25,
-  "editor.letterSpacing": 0.1,
 
   "eslint.validate": ["javascript", "typescript", "vue"],
   // Tailwind Support, see https://tailwindcss.nuxt.dev/tailwind/editor-support
