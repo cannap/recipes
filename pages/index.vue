@@ -1,10 +1,4 @@
-<script setup lang="ts">
-const { $client } = useNuxtApp()
-const { data, refresh, error } = $client.recipes.list.useQuery()
-</script>
+<script setup lang="ts"></script>
 <template>
-  <div>
-    {{ error }}
-    <BaseButton @click="() => refresh()">Refresh</BaseButton>
-  </div>
+  <div></div>
 </template>

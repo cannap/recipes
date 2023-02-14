@@ -5,7 +5,7 @@ import { z } from "zod";
 
 export const recipeRouter = router({
   create: protectedProcedure.input(z.object({
-    title: z.string().min(4),
+    title: z.string().min(4, 'yo'),
     difficulty: z.nativeEnum(Difficulty),
     slug: z.string().min(4),
     description: z.string().min(10),

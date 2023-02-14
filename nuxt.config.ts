@@ -1,4 +1,3 @@
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -8,10 +7,22 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth',
     '@pinia/nuxt',
     '@nuxt/image-edge',
+    "nuxt-icon",
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     '@vue-macros/nuxt',
   ],
+  experimental: {
+    inlineSSRStyles: false,
+  },
+  css: [
+    'floating-vue/dist/style.css',
+    '~/styles/tooltip.css',
+    '~/styles/global.css'
+  ],
+  colorMode: {
+    classSuffix: ''
+  },
   build: {
     transpile: ['trpc-nuxt']
   },
@@ -20,16 +31,17 @@ export default defineNuxtConfig({
     facebookSecret: process.env.FACEBOOK_SECRET,
     secret: process.env.AUTH_SECRET
   },
-
-
   typescript: {
     shim: false
   },
+
   app: {
     head: {
-      title: 'Recipes'
+      title: 'Recipes',
+      bodyAttrs: { class: 'overflow-x-hidden' }
     }
   },
+
   i18n: {
     lazy: true,
     defaultLocale: 'en',

@@ -63,6 +63,13 @@ model Session {
   user         User     @relation(fields: [userId], references: [id])
 }
 
+model System {
+  id          Int      @id @default(autoincrement())
+  installed   Boolean  @default(false)
+  installDate DateTime @default(now())
+  maintenance Boolean  @default(false)
+}
+
 model Recipe {
   id          Int                   @id @default(autoincrement())
   title       String

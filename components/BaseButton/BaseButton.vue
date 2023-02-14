@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-  <button>
+  <button class="dark:bg-blue-400 bg-red-200">
     <slot></slot>
   </button>
 </template>

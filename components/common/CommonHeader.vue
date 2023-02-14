@@ -2,8 +2,8 @@
 
 <template>
   <header>
-    <div class="test">
-      <div class="test"></div>
-    </div>
+    <button>
+      <Icon name="ion:ios-moon" />
+    </button>
   </header>
 </template>
