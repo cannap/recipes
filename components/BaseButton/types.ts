@@ -1,23 +1,16 @@
-import type { ButtonHTMLAttributes, PropType } from 'vue';
+import type { ButtonHTMLAttributes, PropType } from 'vue'
 
 export interface IProps {
-
   outline?: boolean
-  loading?: boolean,
-
+  loading?: boolean
+  disabled?: boolean
   loadingText?: string
   /**
-  * The Variant
-  */
-  variant?:
-  | 'secondary'
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger';
+   * The Variant
+   */
+  intent?: 'secondary' | 'primary' | 'success' | 'warning' | 'danger'
   /**
-  * Native button type
-  */
-  type?: NonNullable<ButtonHTMLAttributes['type']>;
-
+   * Native button type
+   */
+  type?: NonNullable<ButtonHTMLAttributes['type']>
 }

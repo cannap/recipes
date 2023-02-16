@@ -8,9 +8,8 @@ generator client {
 datasource db {
   // NOTE: You probably want to change this to another database later on
   provider = "postgres"
-
   // This value is read from the .env file.
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model Account {
@@ -36,9 +35,8 @@ model Account {
 }
 
 model User {
-  id   String  @id @default(cuid())
-  name String?
-
+  id            String    @id @default(cuid())
+  name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
@@ -73,7 +71,7 @@ model System {
 model Recipe {
   id          Int                   @id @default(autoincrement())
   title       String
-  slug        String                @unique
+  slug        String
   createdAt   DateTime              @default(now())
   updatedAt   DateTime              @updatedAt
   user        User                  @relation(fields: [userId], references: [id])
@@ -97,10 +95,11 @@ model IngredientOnRecipe {
 }
 
 model Category {
-  id      Int                   @id @default(autoincrement())
-  name    String                @unique
-  slug    String                @unique
-  recipes CategoriesOnRecipes[]
+  id          Int                   @id @default(autoincrement())
+  name        String                @unique
+  description String
+  slug        String                @unique
+  recipes     CategoriesOnRecipes[]
 }
 
 model SubCategory {

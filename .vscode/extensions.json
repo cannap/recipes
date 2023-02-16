@@ -3,7 +3,11 @@
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "vue.volar",
-    "bradlc.vscode-tailwindcss",
-    "lokalise.i18n-ally"
+    //  "bradlc.vscode-tailwindcss",
+    "lokalise.i18n-ally",
+    "antfu.file-nesting",
+    "lokalise.i18n-ally",
+    "antfu.goto-alias",
+    "antfu.iconify"
   ]
 }

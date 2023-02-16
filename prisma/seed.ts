@@ -3,7 +3,6 @@ import slugify from 'slugify'
 const prisma = new PrismaClient()
 
 const categoryData: Prisma.CategoryCreateInput[] = [
-
   { name: 'Test', slug: slugify('Test') }
 ]
 async function main() {
@@ -11,8 +10,6 @@ async function main() {
     const category = await prisma.category.create({
       data: c
     })
-
-    console.log('Create Category ' + category.id)
   }
 }
 

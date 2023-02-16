@@ -21,3 +21,5 @@ export const resetDatabase = (databaseUrl?: string) => {
 
   execSync(`cd ${process.cwd()} && DATABASE_URL=${url} npx prisma db push --force-reset`, { stdio: 'inherit' })
 }
+
+resetDatabase()

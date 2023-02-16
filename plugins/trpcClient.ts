@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
    * built on top of `useAsyncData`.
    */
   const client = createTRPCNuxtClient<AppRouter>({
-    transformer: superjson,
+        transformer: superjson,
     links: [
       httpBatchLink({
         url: '/api/trpc'

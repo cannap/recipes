@@ -7,13 +7,14 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth',
     '@pinia/nuxt',
     '@nuxt/image-edge',
-    "nuxt-icon",
+    'nuxt-icon',
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     '@vue-macros/nuxt',
+    '~/modules/devonly'
   ],
   experimental: {
-    inlineSSRStyles: false,
+    inlineSSRStyles: false
   },
   css: [
     'floating-vue/dist/style.css',
@@ -44,13 +45,17 @@ export default defineNuxtConfig({
 
   i18n: {
     lazy: true,
-    defaultLocale: 'en',
+    defaultLocale: 'de',
     langDir: 'locales',
-    locales: [{ code: 'en', file: 'en.json', iso: 'en-US' }]
+
+    customRoutes: 'page',
+
+    locales: [
+      { code: 'en', file: 'en.json', iso: 'en-US', name: 'English' },
+      { code: 'de', file: 'de.json', iso: 'de-DE', name: 'German' }
+    ]
   },
   auth: {
     enableGlobalAppMiddleware: false
   }
 })
-
-
