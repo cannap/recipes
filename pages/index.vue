@@ -1,23 +1,14 @@
 <script setup lang="ts">
-const localePath = useLocalePath()
-const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
-const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== locale.value)
+import { useSetupStore } from '~~/stores/setupStore'
+
+useSeoMeta({
+  title: 'yo'
 })
+const store = useSetupStore()
 </script>
 <template>
   <div>
-    <NuxtLink :to="localePath({ name: 'recipes-id', params: { id: 'Wtf' } })"
-      >grgrgrggergerg</NuxtLink
-    >
-
-    <NuxtLink
-      v-for="locale in availableLocales"
-      :key="locale.code"
-      :to="switchLocalePath(locale.code)"
-      >{{ locale.name }}</NuxtLink
-    >
+    {{ store.getCategories }}
   </div>
 </template>
 

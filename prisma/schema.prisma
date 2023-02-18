@@ -1,14 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
-  // NOTE: You probably want to change this to another database later on
   provider = "postgres"
-  // This value is read from the .env file.
   url      = env("DATABASE_URL")
 }
 
@@ -41,8 +37,8 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  sessions      Session[]
   Recipe        Recipe[]
+  sessions      Session[]
 }
 
 model VerificationToken {
@@ -74,18 +70,22 @@ model Recipe {
   slug        String
   createdAt   DateTime              @default(now())
   updatedAt   DateTime              @updatedAt
-  user        User                  @relation(fields: [userId], references: [id])
   userId      String
   description String
   difficulty  Difficulty
   published   Boolean               @default(false)
+  servings    Int?                  @default(1)
   categories  CategoriesOnRecipes[]
-  servings    Int
+  user        User                  @relation(fields: [userId], references: [id])
 }
 
 model Ingredient {
-  id     Int @id @default(autoincrement())
-  amount Int
+  id          Int     @id @default(autoincrement())
+  amount      Int?
+  name        String  @unique
+  slug        String?
+  description String
+  country     String?
 }
 
 model IngredientOnRecipe {
@@ -95,26 +95,29 @@ model IngredientOnRecipe {
 }
 
 model Category {
-  id          Int                   @id @default(autoincrement())
-  name        String                @unique
-  description String
-  slug        String                @unique
-  recipes     CategoriesOnRecipes[]
+  id            Int                   @id @default(autoincrement())
+  name          String
+  slug          String
+  description   String?
+  subcategories SubCategory[]
+  recipes       CategoriesOnRecipes[]
 }
 
 model SubCategory {
-  id         Int    @id @default(autoincrement())
-  name       String @unique
-  slug       String @unique
-  categoryId Int
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String
+  description String?
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
 }
 
 model CategoriesOnRecipes {
-  recipe     Recipe   @relation(fields: [recipeId], references: [id])
   recipeId   Int
-  category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
   assignedAt DateTime @default(now())
+  category   Category @relation(fields: [categoryId], references: [id])
+  recipe     Recipe   @relation(fields: [recipeId], references: [id])
 
   @@id([recipeId, categoryId])
 }

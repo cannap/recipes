@@ -1,12 +1,12 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule } from '@nuxt/kit'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule'
+    name: 'Trpc Panel',
+    configKey: 'trpcPanel'
   },
   // Default configuration options of the Nuxt module
   defaults: {},

@@ -1,7 +1,8 @@
 import { router } from '../trpc'
 import { recipeRouter } from './recipes'
+import { categoriesRouter } from './categories'
 export const appRouter = router({
-
+  categories: categoriesRouter,
   recipes: recipeRouter
 })
 

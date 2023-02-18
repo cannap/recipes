@@ -6,3 +6,7 @@ html {
 body {
   overflow-y: scroll;
 }
+
+.nuxt-devtools-toggle {
+  @apply hidden md:block;
+}

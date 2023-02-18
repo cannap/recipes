@@ -1,23 +1,40 @@
-import { PrismaClient, Prisma } from '@prisma/client'
+// seed.ts
+
+import { PrismaClient } from '@prisma/client'
 import slugify from 'slugify'
+import categories from './seeds/categories'
+import ingredients from './seeds/ingredients'
+//import './utils'
 const prisma = new PrismaClient()
 
-const categoryData: Prisma.CategoryCreateInput[] = [
-  { name: 'Test', slug: slugify('Test') }
-]
 async function main() {
-  for (const c of categoryData) {
-    const category = await prisma.category.create({
-      data: c
+  for (const category of categories) {
+    const { subcategories, ...rest } = category
+    const createdCategory = await prisma.category.create({
+      data: {
+        ...rest,
+        slug: slugify(category.name, { lower: true }),
+        subcategories: {
+          create: subcategories.map((rest) => {
+            return { ...rest, slug: slugify(rest.name, { lower: true }) }
+          })
+        }
+      }
+    })
+  }
+
+  for (const ingredient of ingredients) {
+    const createdCategory = await prisma.ingredient.create({
+      data: {
+        ...ingredient,
+        slug: slugify(ingredient.name, { lower: true })
+      }
     })
   }
 }
 
 main()
-  .then(async () => {
+  .catch((e) => console.error(e))
+  .finally(async () => {
     await prisma.$disconnect()
-  })
-  .catch(async () => {
-    await prisma.$disconnect()
-    process.exit(1)
   })

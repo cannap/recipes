@@ -4,7 +4,7 @@ import BaseButton from './BaseButton.vue'
 <template>
   <Story>
     <Variant title="Default">
-      <BaseButton :intent="seconday">fe</BaseButton>
+      <BaseButton>fe</BaseButton>
     </Variant>
   </Story>
 </template>
