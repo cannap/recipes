@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { setup, $fetch } from '@nuxt/test-utils'
+
 import TextField from '../components/TextField/TextField.vue'
 import { mount } from '@vue/test-utils'
 describe('Textfield', async () => {
@@ -7,7 +7,8 @@ describe('Textfield', async () => {
     const wrapper = mount(TextField, {
       props: {
         modelValue: 'text',
-        'onUpdate:modelValue': (e) => wrapper.setProps({ modelValue: e })
+        'onUpdate:modelValue': (e: string) =>
+          wrapper.setProps({ modelValue: e })
       }
     })
     await wrapper.find('input').setValue('test')
