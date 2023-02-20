@@ -9,8 +9,8 @@ export const recipeRouter = router({
       z.object({
         title: z
           .string()
-          .min(4, 'yo')
-          .regex(/^[A-Za-zÄäÖöÜüß]+$/, 'MEEEHH'),
+          .min(4)
+          .regex(/^[A-Za-zÄäÖöÜüß]+$/),
         difficulty: z.nativeEnum(Difficulty),
         description: z.string().min(10), //Allow only simple html like strong
         published: z.boolean(),

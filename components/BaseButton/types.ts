@@ -5,6 +5,7 @@ export interface IProps {
   loading?: boolean
   disabled?: boolean
   loadingText?: string
+  error?: string
   /**
    * The Variant
    */

@@ -1,25 +1,20 @@
-import { publicProcedure, protectedProcedure, router } from '../trpc'
+import { publicProcedure, router } from '../trpc'
 
-import { Difficulty, Prisma } from '@prisma/client'
 import { z } from 'zod'
 
 export const categoriesRouter = router({
   create: publicProcedure
     .input(
+      //Todo: this regex is only working for english and german
       z.object({ title: z.string().regex(/^[A-Za-zÄäÖöÜüß]+$/, 'Not Allowed') })
     )
     .mutation(async ({ input, ctx }) => {}),
   list: publicProcedure.query(async (req) => {
-    const recipes = await req.ctx.prisma.category.findMany({
-      include: {
-        subcategories: {
-          orderBy: { name: 'asc' }
-        }
-      },
+    const categories = await req.ctx.prisma.category.findMany({
       orderBy: {
         name: 'asc'
       }
     })
-    return recipes
+    return categories
   })
 })

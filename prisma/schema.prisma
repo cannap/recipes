@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../node_modules/.prisma/client"
+  provider        = "prisma-client-js"
+  output          = "../node_modules/.prisma/client"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -65,18 +66,27 @@ model System {
 }
 
 model Recipe {
-  id          Int                   @id @default(autoincrement())
+  id           String                @id @default(cuid())
+  title        String
+  slug         String
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  userId       String
+  description  String
+  difficulty   Difficulty
+  published    Boolean               @default(false)
+  servings     Int?                  @default(1)
+  categories   CategoriesOnRecipes[]
+  user         User                  @relation(fields: [userId], references: [id])
+  recipe_steps RecipesStep[]
+}
+
+model RecipesStep {
+  id          Int    @id @default(autoincrement())
   title       String
-  slug        String
-  createdAt   DateTime              @default(now())
-  updatedAt   DateTime              @updatedAt
-  userId      String
   description String
-  difficulty  Difficulty
-  published   Boolean               @default(false)
-  servings    Int?                  @default(1)
-  categories  CategoriesOnRecipes[]
-  user        User                  @relation(fields: [userId], references: [id])
+  recipeId    String
+  recipe      Recipe @relation(fields: [recipeId], references: [id])
 }
 
 model Ingredient {
@@ -113,7 +123,7 @@ model SubCategory {
 }
 
 model CategoriesOnRecipes {
-  recipeId   Int
+  recipeId   String
   categoryId Int
   assignedAt DateTime @default(now())
   category   Category @relation(fields: [categoryId], references: [id])

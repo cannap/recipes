@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+  //@ts-ignore
   modules: [
     '@nuxt/devtools',
     '@nuxtjs/tailwindcss',
@@ -13,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vue-macros/nuxt',
     '~/modules/devonly'
+    // '@nuxtjs/html-validator'
   ],
   experimental: {
     inlineSSRStyles: false
@@ -43,11 +45,10 @@ export default defineNuxtConfig({
     head: {
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
       title: 'Recipes',
-      bodyAttrs: { class: 'overflow-x-hidden' }
+      bodyAttrs: { class: 'overflow-x-hidden bg-primary' }
     }
   },
 
-  vite: {},
   i18n: {
     lazy: true,
     defaultLocale: 'de',

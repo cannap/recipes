@@ -1,9 +1,6 @@
 import { defineNuxtModule } from '@nuxt/kit'
 
-// Module options TypeScript inteface definition
-export interface ModuleOptions {}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule({
   meta: {
     name: 'Trpc Panel',
     configKey: 'trpcPanel'

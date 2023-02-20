@@ -1,18 +1,25 @@
 import { Prisma } from '@prisma/client'
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import { Raw } from 'vue'
+
 export const useSetupStore = defineStore('setup', {
   state: () => ({
-    catgories: null as Prisma.CategorySelect[] | null
+    categories: null as Raw<Prisma.CategorySelect[]> | null
   }),
   getters: {
-    getCategories: (state) => state.catgories
+    getCategories: (state) => state.categories
   },
   actions: {
     async setCategories() {
       const { $client } = useNuxtApp()
-
-      const { data } = await $client.categories.list.useQuery()
-      this.catgories = markRaw(data.value as any) //dont know why this ts shit is complaining
+      try {
+        const { data } = await $client.categories.list.useQuery()
+        if (Array.isArray(data.value)) {
+          this.categories = markRaw(data.value) as any
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 })

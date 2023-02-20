@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { IProps } from './types'
 import { cva } from 'cva'
-import { type } from 'os'
 
 const props = withDefaults(defineProps<IProps>(), {
   intent: 'secondary',
@@ -26,7 +25,7 @@ const buttonStyle = computed(() => {
 })
 </script>
 <template>
-  <button :class="buttonStyle">
+  <button v-bind="$attrs" :class="buttonStyle">
     <slot></slot>
   </button>
 </template>
