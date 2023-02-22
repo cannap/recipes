@@ -66,31 +66,31 @@ model System {
 }
 
 model Recipe {
-  id           String                @id @default(cuid())
-  title        String
-  slug         String
-  createdAt    DateTime              @default(now())
-  updatedAt    DateTime              @updatedAt
-  userId       String
-  description  String
-  difficulty   Difficulty
-  published    Boolean               @default(false)
-  servings     Int?                  @default(1)
-  categories   CategoriesOnRecipes[]
-  user         User                  @relation(fields: [userId], references: [id])
-  recipe_steps RecipesStep[]
+  id          Int                   @id @default(autoincrement())
+  name        String
+  slug        String
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+  userId      String
+  description String
+  difficulty  Difficulty?           @default(EASY)
+  published   Boolean               @default(false)
+  servings    Int?                  @default(1)
+  categories  CategoriesOnRecipes[]
+  user        User                  @relation(fields: [userId], references: [id])
+  steps       RecipesStep[]
 }
 
 model RecipesStep {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(cuid())
   title       String
   description String
-  recipeId    String
+  recipeId    Int
   recipe      Recipe @relation(fields: [recipeId], references: [id])
 }
 
 model Ingredient {
-  id          Int     @id @default(autoincrement())
+  id          String  @id @default(cuid())
   amount      Int?
   name        String  @unique
   slug        String?
@@ -99,7 +99,7 @@ model Ingredient {
 }
 
 model IngredientOnRecipe {
-  id     Int    @id @default(autoincrement())
+  id     String @id @default(cuid())
   amount Int
   unit   String
 }
@@ -123,7 +123,7 @@ model SubCategory {
 }
 
 model CategoriesOnRecipes {
-  recipeId   String
+  recipeId   Int
   categoryId Int
   assignedAt DateTime @default(now())
   category   Category @relation(fields: [categoryId], references: [id])

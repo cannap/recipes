@@ -1,3 +1,7 @@
 {
-  "welcome": "Welcome"
+  "add_recipe_step": "Rezept hinzufügen",
+  "step_title": "Titel",
+  "step_description": "Schrittbeschreibung",
+  "title_for_step": "Titel für Schritt {step}",
+  "prepare_the_dough": "Zubereitung des Teigs"
 }

@@ -2,39 +2,21 @@ import { publicProcedure, protectedProcedure, router } from '../trpc'
 import slugify from 'slugify'
 import { Difficulty } from '@prisma/client'
 import { z } from 'zod'
-
+import { recipeSchema } from '~~/schemas/recipe.schema'
 export const recipeRouter = router({
   create: protectedProcedure
-    .input(
-      z.object({
-        title: z
-          .string()
-          .min(4)
-          .regex(/^[A-Za-zÄäÖöÜüß]+$/),
-        difficulty: z.nativeEnum(Difficulty),
-        description: z.string().min(10), //Allow only simple html like strong
-        published: z.boolean(),
-        servings: z.number()
-      })
-    )
+    .input(recipeSchema)
+
     .mutation(async ({ input, ctx }) => {
       const recipe = await ctx.prisma.recipe.create({
         data: {
           description: input.description,
-          published: input.published,
-          title: input.title,
-          servings: input.servings,
+          name: input.name,
           difficulty: input.difficulty,
-          slug: slugify(input.title),
-          userId: ctx.session.user.id
-        },
-        select: {
-          description: true,
-          id: true,
-          title: true,
-          servings: true,
-          userId: true,
-          published: true
+          slug: slugify(input.name, { lower: true }),
+          steps: { create: input.steps },
+          servings: input.servings,
+          userId: ctx.session?.user.id
         }
       })
       return recipe

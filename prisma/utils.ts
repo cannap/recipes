@@ -1,5 +1,6 @@
 import { execSync } from 'child_process'
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 /**
  * Helper to reset the database via a programmatic prisma invocation. Helpful to add to `beforeEach` or `beforeAll` of your testing setup.
  *
@@ -12,14 +13,21 @@ import { execSync } from 'child_process'
 export const resetDatabase = (databaseUrl?: string) => {
   const url = databaseUrl || process.env.DATABASE_URL
   if (!url) {
-    throw new Error('Cannot reset database - connection string could not be inferred.')
+    throw new Error(
+      'Cannot reset database - connection string could not be inferred.'
+    )
   }
 
   if (process.env.NODE_ENV === 'production') {
-    throw new Error('This utility should not be called in production. It is meant for testing and development')
+    throw new Error(
+      'This utility should not be called in production. It is meant for testing and development'
+    )
   }
 
-  execSync(`cd ${process.cwd()} && DATABASE_URL=${url} npx prisma db push --force-reset`, { stdio: 'inherit' })
+  execSync(
+    `cd ${process.cwd()} && DATABASE_URL=${url} npx prisma db push --force-reset`,
+    { stdio: 'inherit' }
+  )
 }
 
 resetDatabase()

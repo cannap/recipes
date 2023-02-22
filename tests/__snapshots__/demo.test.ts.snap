@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Textfield > Renders 1`] = `
-"<div class=\\"input\\">
-  <!--v-if--><input type=\\"text\\">
-</div>"
-`;

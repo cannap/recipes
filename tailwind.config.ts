@@ -3,13 +3,12 @@ export default <Partial<Config>>{
   darkMode: 'class',
 
   theme: {
-    colors: {
-      primary: 'red'
+    extends: {
+      colors: {
+        primary: 'red'
+      }
     }
   },
   content: ['nuxt.config.ts'],
-  plugins: [
-    require('@tailwindcss/forms')
-    // ...
-  ]
+  plugins: [require('@tailwindcss/forms')]
 }

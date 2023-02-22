@@ -13,8 +13,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     '@vue-macros/nuxt',
-    '~/modules/devonly'
-    // '@nuxtjs/html-validator'
+    '~/modules/devonly',
+    'nuxt-vitest'
   ],
   experimental: {
     inlineSSRStyles: false
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     head: {
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
       title: 'Recipes',
-      bodyAttrs: { class: 'overflow-x-hidden bg-primary' }
+      bodyAttrs: { class: 'overflow-x-hidden' }
     }
   },
 
@@ -62,7 +62,7 @@ export default defineNuxtConfig({
     ]
   },
   auth: {
-    origin: 'http://localhost:3000',
+    origin: process.env.AUTH_ORIGIN,
     enableGlobalAppMiddleware: false
   }
 })
