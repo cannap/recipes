@@ -28,7 +28,7 @@ const addRecipe = async () => {
         />
       </div>
     </div>
-    <BaseButton @click="addStep">{{ $t('add_recipe_step') }}</BaseButton>
+    <BaseButton @click="addStep()">{{ $t('add_recipe_step') }}</BaseButton>
     <button @click="addRecipe">Bla</button>
   </div>
 </template>
