@@ -36,7 +36,7 @@ function handleInput(event: Event) {
     <label
       :for="id"
       v-if="label"
-      class="block text-gray-700 text-sm"
+      class="block text-gray-700 text-sm mb-1"
       :class="{ 'bg-red-500': error }"
       >{{ props.label }}</label
     >
@@ -45,7 +45,7 @@ function handleInput(event: Event) {
         :name="name || id"
         :id="id || name"
         ref="input"
-        class="block w-full"
+        class="block w-full bg-none"
         :value="modelValue"
         @input="handleInput"
         v-bind="$attrs"

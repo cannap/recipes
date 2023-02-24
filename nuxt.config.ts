@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@sidebase/nuxt-auth',
     '@pinia/nuxt',
+    //   'nuxt-typed-router',
     '@nuxt/image-edge',
     'nuxt-icon',
     '@vueuse/nuxt',
@@ -45,7 +46,7 @@ export default defineNuxtConfig({
     head: {
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
       title: 'Recipes',
-      bodyAttrs: { class: 'overflow-x-hidden' }
+      bodyAttrs: { class: '' }
     }
   },
 

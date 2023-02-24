@@ -13,6 +13,7 @@ export const recipeSchema = z.object({
       description: z.string()
     })
   ),
+
   ingredients: z
     .object({
       name: z.string(),

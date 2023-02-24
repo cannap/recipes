@@ -1,20 +1,25 @@
 import { publicProcedure, protectedProcedure, router } from '../trpc'
-import slugify from 'slugify'
-import { Difficulty } from '@prisma/client'
 import { z } from 'zod'
-import { recipeSchema } from '~~/schemas/recipe.schema'
+import { recipeSchema } from '@/schemas/recipe.schema'
+import { removeEmptyObjectsFromArray, makeSlug } from '~~/utils'
 export const recipeRouter = router({
   create: protectedProcedure
     .input(recipeSchema)
 
     .mutation(async ({ input, ctx }) => {
+      console.log(input)
       const recipe = await ctx.prisma.recipe.create({
         data: {
-          description: input.description,
+          description: input.description, //Todo: sanitize
           name: input.name,
           difficulty: input.difficulty,
-          slug: slugify(input.name, { lower: true }),
-          steps: { create: input.steps },
+          slug: makeSlug(input.name),
+          steps: {
+            create: removeEmptyObjectsFromArray(input.steps, [
+              'description',
+              'title'
+            ])
+          },
           servings: input.servings,
           userId: ctx.session?.user.id
         }

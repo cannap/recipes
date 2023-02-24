@@ -2,11 +2,7 @@ export default [
   {
     name: 'Appetizers',
     description: 'Small dishes served before the main course',
-    subcategories: [
-      { name: 'Dips and Spreads' },
-      { name: 'Finger Foods' },
-      { name: 'Bruschetta' }
-    ]
+    subcategories: [{ name: 'Dips and Spreads' }, { name: 'Finger Foods' }]
   },
   {
     name: 'Soups',

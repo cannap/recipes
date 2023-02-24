@@ -1,10 +1,19 @@
-import { Prisma } from '@prisma/client'
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import { Raw } from 'vue'
-
+export interface Categories {
+  name: string
+  id: string
+  description?: string
+  slug: string
+  subcategories?: {
+    slug: string
+    id: string
+    description?: string
+  }[]
+}
 export const useSetupStore = defineStore('setup', {
   state: () => ({
-    categories: null as Raw<Prisma.CategorySelect[]> | null
+    categories: null as Raw<Categories[]> | null
   }),
   getters: {
     getCategories: (state) => state.categories
@@ -15,7 +24,7 @@ export const useSetupStore = defineStore('setup', {
       try {
         const { data } = await $client.categories.list.useQuery()
         if (Array.isArray(data.value)) {
-          this.categories = markRaw(data.value) as any
+          this.categories = toRaw(data.value) as any
         }
       } catch (error) {
         console.log(error)

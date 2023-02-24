@@ -1,10 +1,9 @@
 html {
   width: 100%;
-  width: 100vw;
 }
 
 body {
-  overflow-y: scroll;
+  @apply overflow-x-hidden pt-[90px]  overflow-y-scroll;
 }
 
 .nuxt-devtools-toggle {

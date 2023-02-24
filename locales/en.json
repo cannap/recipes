@@ -3,5 +3,9 @@
   "step_title": "Title",
   "step_description": "Step Description",
   "title_for_step": "Title for Step {step}",
-  "prepare_the_dough": "Preparing the Dough"
+  "prepare_the_dough": "Preparing the Dough",
+  "recipes": "Recipes",
+  "add_recipe": "Add Recipe",
+  "sign_in": "Sign in",
+  "sign_out": "Logout"
 }

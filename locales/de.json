@@ -1,7 +1,11 @@
 {
-  "add_recipe_step": "Rezept hinzufügen",
+  "add_recipe_step": "Schritt hinzufügen",
   "step_title": "Titel",
   "step_description": "Schrittbeschreibung",
   "title_for_step": "Titel für Schritt {step}",
-  "prepare_the_dough": "Zubereitung des Teigs"
+  "prepare_the_dough": "Zubereitung des Teigs",
+  "recipes": "Rezepte",
+  "add_recipe": "Rezept hinzufügen",
+  "sign_in": "Anmelden",
+  "sign_out": "Ausloggen"
 }

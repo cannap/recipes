@@ -1,10 +1,10 @@
 // seed.ts
 
 import { PrismaClient } from '@prisma/client'
-import slugify from 'slugify'
 import categories from './seeds/categories'
 import ingredients from './seeds/ingredients'
-//import './utils'
+import { makeSlug } from '~~/utils'
+
 const prisma = new PrismaClient()
 
 async function main() {
@@ -13,10 +13,10 @@ async function main() {
     const createdCategory = await prisma.category.create({
       data: {
         ...rest,
-        slug: slugify(category.name, { lower: true }),
+        slug: makeSlug(category.name),
         subcategories: {
           create: subcategories.map((rest) => {
-            return { ...rest, slug: slugify(rest.name, { lower: true }) }
+            return { ...rest, slug: makeSlug(rest.name) }
           })
         }
       }
@@ -27,7 +27,7 @@ async function main() {
     const createdCategory = await prisma.ingredient.create({
       data: {
         ...ingredient,
-        slug: slugify(ingredient.name, { lower: true })
+        slug: makeSlug(ingredient.name)
       }
     })
   }

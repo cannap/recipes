@@ -7,7 +7,7 @@ defineI18nRoute({
 </script>
 
 <template>
-  <div></div>
+  <MainContent></MainContent>
 </template>
 
 <style lang="scss" scoped></style>
