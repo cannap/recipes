@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useTextareaAutosize } from '@vueuse/core'
-
 export interface IProps {
   label?: string
   modelValue: string | number
@@ -8,30 +6,17 @@ export interface IProps {
   name?: string
   error?: string
   rows?: number
-  type?: 'textarea' | 'text' | 'number' | 'date' | 'tel' | 'color' //Info i know there are more but they will never used or we will create custom components for it
 }
 
 const rootEl = ref<HTMLElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
-const textarea = ref<HTMLTextAreaElement | null>(null)
 defineExpose({ rootEl, input })
 const emits = defineEmits<{
   (e: 'update:modelValue', value: IProps['modelValue']): void
   (e: 'input', value: IProps['modelValue']): void
 }>()
 
-const props = withDefaults(defineProps<IProps>(), {
-  type: 'text',
-  rows: 20
-})
-
-onMounted(() => {
-  if (props.type === 'textarea' && textarea.value) {
-    useTextareaAutosize({ element: textarea.value, input: modelValue.value })
-  }
-})
-
-const { textarea: areaSize, input: modelValue } = useTextareaAutosize()
+const props = withDefaults(defineProps<IProps>(), {})
 
 const setFocus = () => {
   //input.value?.focus()
@@ -56,7 +41,6 @@ function handleInput(event: Event) {
     >
     <FormsInputWrapper>
       <input
-        v-if="type !== 'textarea'"
         :name="name || id"
         :id="id || name"
         ref="input"
@@ -64,17 +48,6 @@ function handleInput(event: Event) {
         :value="modelValue"
         @input="handleInput"
         v-bind="$attrs"
-      />
-      <textarea
-        :rows="rows"
-        :name="name || id"
-        :id="id || name"
-        class="block w-full p-2 border-none focus:outline-none"
-        ref="textarea"
-        :value="modelValue"
-        @input="handleInput"
-        v-bind="$attrs"
-        v-else
       />
     </FormsInputWrapper>
   </div>
