@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { signIn, signOut, getSession, status } = useSession()
+const { signIn, signOut, getSession, status, data } = useSession()
 const session = await getSession()
 </script>
 

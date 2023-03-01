@@ -7,5 +7,7 @@
   "recipes": "Rezepte",
   "add_recipe": "Rezept hinzufügen",
   "sign_in": "Anmelden",
-  "sign_out": "Ausloggen"
+  "sign_out": "Ausloggen",
+  "remove_step": "Stufe entfernen",
+  "recipe_name": "Rezeptname"
 }

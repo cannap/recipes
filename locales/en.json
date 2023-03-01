@@ -7,5 +7,7 @@
   "recipes": "Recipes",
   "add_recipe": "Add Recipe",
   "sign_in": "Sign in",
-  "sign_out": "Logout"
+  "sign_out": "Logout",
+  "remove_step": "Remove Step",
+  "recipe_name": "Recipe name"
 }

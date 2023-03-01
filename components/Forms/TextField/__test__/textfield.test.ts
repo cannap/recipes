@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-
-import TextField from '../TextField.vue'
 import { mount } from '@vue/test-utils'
+import TextField from '../TextField.vue'
+
 describe('Textfield', async () => {
   it('Updates Modelvalue', async () => {
     const wrapper = mount(TextField, {

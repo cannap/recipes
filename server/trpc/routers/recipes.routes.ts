@@ -2,12 +2,11 @@ import { publicProcedure, protectedProcedure, router } from '../trpc'
 import { z } from 'zod'
 import { recipeSchema } from '@/schemas/recipe.schema'
 import { removeEmptyObjectsFromArray, makeSlug } from '~~/utils'
+
 export const recipeRouter = router({
   create: protectedProcedure
     .input(recipeSchema)
-
     .mutation(async ({ input, ctx }) => {
-      console.log(input)
       const recipe = await ctx.prisma.recipe.create({
         data: {
           description: input.description, //Todo: sanitize

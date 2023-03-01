@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@sidebase/nuxt-auth',
     '@pinia/nuxt',
-    //   'nuxt-typed-router',
+    'nuxt-typed-router',
     '@nuxt/image-edge',
     'nuxt-icon',
     '@vueuse/nuxt',
@@ -49,14 +49,18 @@ export default defineNuxtConfig({
       bodyAttrs: { class: '' }
     }
   },
-
+  nuxtTypedRouter: {
+    // experimentalPathCheck: false
+  },
   i18n: {
+    strategy: 'prefix_except_default',
     lazy: true,
     defaultLocale: 'de',
     langDir: 'locales',
 
-    customRoutes: 'page',
-
+    vueI18n: {
+      fallbackLocale: 'en'
+    },
     locales: [
       { code: 'en', file: 'en.json', iso: 'en-US', name: 'English' },
       { code: 'de', file: 'de.json', iso: 'de-DE', name: 'German' }

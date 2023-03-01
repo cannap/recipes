@@ -11,7 +11,7 @@ const props = defineProps({
     type: String as PropType<'md' | 'xs'>
   },
   intent: {
-    default: '',
+    default: 'primary',
     type: String as PropType<'secondary' | 'primary'>
   }
 })
@@ -19,15 +19,13 @@ const props = defineProps({
 const buttonStyle = computed(() => {
   return cva(
     [
-      'rounded-md border transition duration-500 ease select-none  focus:outline-none focus:shadow-outline'
+      'rounded-md border transition  duration-500 ease select-none focus:outline-none focus:shadow-outline  max-w-full'
     ],
     {
       variants: {
         intent: {
-          secondary:
-            'border-blue-500 bg-blue-500 text-white  hover:bg-blue-600',
-          primary:
-            'border-green-500 bg-green-500 text-white  hover:bg-green-600'
+          secondary: 'border-blue-500 bg-blue-500 text-white hover:bg-blue-600',
+          primary: 'border-green-500 bg-green-500 text-white hover:bg-green-600'
         },
         disabled: {
           true: 'cursor-not-allowed'

@@ -9,6 +9,6 @@ export default <Partial<Config>>{
       }
     }
   },
-  content: ['nuxt.config.ts'],
-  plugins: [require('@tailwindcss/forms')]
+  content: ['nuxt.config.ts']
+  //  plugins: [require('@tailwindcss/forms')]
 }

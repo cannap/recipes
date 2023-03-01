@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  @apply overflow-x-hidden pt-[90px]  overflow-y-scroll;
+  @apply overflow-x-hidden py-[90px]  overflow-y-scroll;
 }
 
 .nuxt-devtools-toggle {

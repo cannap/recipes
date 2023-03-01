@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { fileOpen, supported } from 'browser-fs-access'
+import type { FileWithHandle } from 'browser-fs-access'
+
+const file = ref<FileWithHandle | null>(null)
 
 const selectImage = async () => {
   if (process.server) return
@@ -8,7 +11,6 @@ const selectImage = async () => {
     mimeTypes: ['image/jpeg', 'image/png'],
     description: 'Image'
   })
-  console.log(image)
 }
 </script>
 
