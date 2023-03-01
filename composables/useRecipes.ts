@@ -15,7 +15,6 @@ export function useRecipe(initialRecipe = defaultRecipe) {
 
   const removeStep = (id: string) => {
     if (recipe.value.steps.length === 1) return
-
     recipe.value.steps = recipe.value.steps.filter((step) => step.id !== id)
   }
 
