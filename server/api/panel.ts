@@ -1,9 +1,9 @@
 import { renderTrpcPanel } from 'trpc-panel'
 import { appRouter } from '../trpc/routers'
 
-export default defineEventHandler(async (_event) => {
+export default defineEventHandler(async (event) => {
   if (process.env.NODE_ENV !== 'development') {
-    await sendRedirect(_event, '/', 403)
+    await sendRedirect(event, '/', 403)
   }
 
   return renderTrpcPanel(appRouter, {

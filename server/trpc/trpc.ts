@@ -22,7 +22,7 @@ const t = initTRPC.context<Context>().create({
 /**
  * Reusable middleware that checks if users are authenticated.
  **/
-const isAuthed = t.middleware(({ next, ctx }) => {
+const isAuthenticated = t.middleware(({ next, ctx }) => {
   if (!ctx.session?.user?.email) {
     throw new TRPCError({
       code: 'UNAUTHORIZED'
@@ -58,4 +58,4 @@ export const middleware = t.middleware
  */
 export const mergeRouters = t.mergeRouters
 
-export const protectedProcedure = t.procedure.use(isAuthed)
+export const protectedProcedure = t.procedure.use(isAuthenticated)

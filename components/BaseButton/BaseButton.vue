@@ -12,7 +12,7 @@ const props = defineProps({
   },
   intent: {
     default: 'primary',
-    type: String as PropType<'secondary' | 'primary'>
+    type: String as PropType<'secondary' | 'primary' | 'danger'>
   }
 })
 
@@ -25,7 +25,9 @@ const buttonStyle = computed(() => {
       variants: {
         intent: {
           secondary: 'border-blue-500 bg-blue-500 text-white hover:bg-blue-600',
-          primary: 'border-green-500 bg-green-500 text-white hover:bg-green-600'
+          primary:
+            'border-green-500 bg-green-500 text-white hover:bg-green-600',
+          danger: 'border-red-500 bg-red-500 text-white hover:bg-red-600'
         },
         disabled: {
           true: 'cursor-not-allowed'
@@ -37,7 +39,7 @@ const buttonStyle = computed(() => {
       },
       compoundVariants: [
         {
-          intent: ['primary', 'secondary'],
+          intent: ['primary', 'secondary', 'danger'],
           disabled: true,
           class: 'opacity-80'
         }

@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@sidebase/nuxt-auth',
     '@pinia/nuxt',
-    'nuxt-typed-router',
+    // 'nuxt-typed-router',
     '@nuxt/image-edge',
     'nuxt-icon',
     '@vueuse/nuxt',
@@ -41,23 +41,18 @@ export default defineNuxtConfig({
   },
 
   app: {
-    keepalive: true,
-
+    // keepalive: true,
     head: {
       viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
-      title: 'Recipes',
-      bodyAttrs: { class: '' }
+      title: 'Recipes'
     }
   },
-  nuxtTypedRouter: {
-    // experimentalPathCheck: false
-  },
-  i18n: {
-    strategy: 'prefix_except_default',
-    lazy: true,
-    defaultLocale: 'de',
-    langDir: 'locales',
 
+  i18n: {
+    // strategy: 'prefix_except_default',
+    lazy: true,
+    defaultLocale: 'en',
+    langDir: 'locales',
     vueI18n: {
       fallbackLocale: 'en'
     },
@@ -67,7 +62,6 @@ export default defineNuxtConfig({
     ]
   },
   auth: {
-    origin: process.env.AUTH_ORIGIN,
-    enableGlobalAppMiddleware: false
+    origin: process.env.AUTH_ORIGIN
   }
 })

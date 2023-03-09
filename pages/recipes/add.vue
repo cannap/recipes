@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+onBeforeUnmount(() => {
+  console.log('frf')
+})
+</script>
 
 <template>
   <MainContent>

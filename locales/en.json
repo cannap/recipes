@@ -9,5 +9,6 @@
   "sign_in": "Sign in",
   "sign_out": "Logout",
   "remove_step": "Remove Step",
-  "recipe_name": "Recipe name"
+  "recipe_name": "Recipe name",
+  "recipe_description": "Recipe Description"
 }
